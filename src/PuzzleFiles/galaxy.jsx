@@ -47,6 +47,25 @@ let galaxy = {
         ]
 }
 
+let xSmallest = 1000
+let ySmallest = 1000
+
+galaxy.dot.forEach(function (d){
+    if (d.x < xSmallest){
+        xSmallest=d.x
+    }
+
+    if (d.y < ySmallest){
+        ySmallest=d.y
+    }
+})
+console.log('smallests', xSmallest, ySmallest)
+galaxy.dot.forEach(function (d){
+    d.x = d.x-xSmallest
+    d.y = d.y-ySmallest
+})
+
+console.log(galaxy)
 
 
 export default galaxy

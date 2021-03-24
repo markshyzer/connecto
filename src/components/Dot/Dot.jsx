@@ -20,7 +20,7 @@ constructor(){
         return(
             <div className={'dot '+this.props.selected+ ' ' +this.props.valid} 
             onClick={() => this.props.clickDot(this.props.dotIndex)}
-            style = {{top: Math.round(this.props.x)+"px", left: Math.round(this.props.y)+'px'}}
+            style = {{left: this.props.x+"px", top: this.props.y+'px'}}
             >{this.props.dotIndex} x, {this.props.x} y, {this.props.y}, {this.props.selected},</div>
 
         )

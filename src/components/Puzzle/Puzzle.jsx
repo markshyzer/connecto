@@ -4,6 +4,7 @@ import Line from '../Line/Line'
 import './Puzzle.css';
 import galaxy from '../../PuzzleFiles/galaxy';
 import garden from '../../PuzzleFiles/garden';
+import beach from '../../PuzzleFiles/beach';
 
 
 
@@ -13,7 +14,7 @@ class Puzzle extends React.Component{
         this.state = { 
             move: [],
             score: 0,
-            puzzle : garden,
+            puzzle : galaxy,
             
             puzzle2: {
                 dot: [
