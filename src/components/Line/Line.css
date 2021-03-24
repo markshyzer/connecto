@@ -1,0 +1,16 @@
+.line {
+    position: absolute;
+    height: 0px;
+    border-top: thick solid blue;
+    /* width: 100vw; */
+    transform-origin: bottom left;
+    z-index: -1;
+}
+
+.legal {
+   border-top: thick dashed blue;
+}
+
+.used {
+    border-top: thick solid black;
+}

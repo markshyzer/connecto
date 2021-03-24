@@ -1,0 +1,13 @@
+.dot {
+    background-color: red;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50px;
+    font-size: x-small;
+    position: absolute;
+    transform: translate(-50%, -50%) /* adjusts div by 50% of its height and width so that its center is at x, y */
+}
+
+.selected {
+    background-color: green;
+}
