@@ -11,3 +11,8 @@
 .selected {
     background-color: green;
 }
+
+.valid:hover {
+    width: 4vw;
+    height: 4vw;
+}

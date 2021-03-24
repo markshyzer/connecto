@@ -2,6 +2,8 @@ import React from 'react';
 import Dot from '../Dot/Dot'
 import Line from '../Line/Line'
 import './Puzzle.css';
+import galaxy from '../../PuzzleFiles/galaxy';
+import garden from '../../PuzzleFiles/garden';
 
 
 
@@ -10,8 +12,10 @@ class Puzzle extends React.Component{
         super();
         this.state = { 
             move: [],
-            valid: [],
-            puzzle : {
+            score: 0,
+            puzzle : garden,
+            
+            puzzle2: {
                 dot: [
                     { x: 382, y: 328.6, selected: false, valid: true },
                     { x: 673.4, y: 503.6, selected: false, valid: true },
@@ -64,55 +68,82 @@ class Puzzle extends React.Component{
 
     clickDot = (dotIndex) => {
         // console.log(this.state.puzzle.dot[dotIndex])
-        let newDot = [...this.state.puzzle.dot]
-        newDot[dotIndex].selected = !(newDot[dotIndex].selected)
-        let newMove = [...this.state.move]
-        newMove.push(dotIndex)
-        // console.log('push move', newMove)
-        this.setState({puzzle: {...this.state.puzzle, dot: newDot}})
-        this.setState({move: [...newMove]}, () => this.checkLegal())
-        // console.log(this.state.puzzle.dot[dotIndex])
-        // console.log('this.state.move', this.state.move[0])
+        if (this.state.puzzle.dot[dotIndex].valid){
+            let newDot = [...this.state.puzzle.dot]
+            newDot[dotIndex].selected = !(newDot[dotIndex].selected)
+            let newMove = [...this.state.move]
+            newMove.push(dotIndex)
+            // console.log('push move', newMove)
+            this.setState({puzzle: {...this.state.puzzle, dot: newDot}})
+            this.setState({move: [...newMove]}, () => this.checkLegal())
+            // console.log(this.state.puzzle.dot[dotIndex])
+            // console.log('this.state.move', this.state.move[0])
+            this.setState({score: this.state.score+1}, this.checkWin())
+
+        }
 
     }
 
-    blockPath = () => {
-        if (this.state.move.length > 1){
-            let currentDot = this.state.move[this.state.move.length-1]
-            let prevDot = this.state.move[this.state.move.length-2]
-            console.log("current move:", this.state.move[this.state.move.length-1] )
-            let newLine = [...this.state.puzzle.line]
-            newLine.forEach(function (l,i) {
-                if (l.includes(currentDot) && l.includes(prevDot)) {
-                    newLine[i].splice(2, 1, 'used')
-                    console.log('A line was used. It was line number', i, newLine[i])
-                }
-            })
-            // this.setState({line: [...newLine]}, () => console.log('used:', this.state.line))
-            this.setState({puzzle: {...this.state.puzzle, line: [...newLine]}})
-
-
+    checkWin = () => {
+        if (this.state.score === this.state.puzzle.dot.length-1) {
+            alert("You win!")
         }
+        console.log('score', this.state.score)
+    }
+
+    blockPath = () => {
+
+        // console.log("current move:", this.state.move[this.state.move.length-1] )
+        let newLine = [...this.state.puzzle.line]
+        let prevDot = this.state.move[0]
+        this.state.move.forEach(function (m,i){
+            if (i > 0){
+                newLine.forEach(function (line, index){
+                    if(line.includes(m) && line.includes(prevDot)){
+                        console.log('the line includes ', m, 'and ', prevDot)
+                        newLine[index].splice(2, 1, 'used')
+                    }
+                })
+            }
+            prevDot = m
+        })
+        // this.setState({line: [...newLine]}, () => console.log('used:', this.state.line))
+        this.setState({puzzle: {...this.state.puzzle, line: [...newLine]}})
+
     }
 
     checkLegal = () => {
         let current = this.state.move[this.state.move.length-1]
         console.log('current move', current)
-        let newLine = this.state.puzzle.line.map(l => l.includes(current) ? [l[0], l[1], l[2]='legal'] : [l[0], l[1], l[2] ='unselected'] )
 
-        // if (this.state.move.length > 1){
-        //     let currentDot = this.state.move[this.state.move.length-1]
-        //     let prevDot = this.state.move[this.state.move.length-2]
-        //     // console.log("current move:", this.state.move[this.state.move.length-1] )
-        //     newLine.forEach(function (l,i) {
-        //         if (l.includes(currentDot) && l.includes(prevDot)) {
-        //             l.splice(2, 1, 'used')
-        //             console.log('A line was used. It was line number', i, l)
-        //         }
-        //     })
-        // }    
-        // this.setState({puzzle: {...this.state.puzzle, dot: newDot}})
-        this.setState({puzzle: {...this.state.puzzle, line: [...newLine]}}, () => this.blockPath())
+        let newLine = [...this.state.puzzle.line]
+        newLine.forEach((line, index) => {
+            if (line.includes(current) && !(this.state.puzzle.dot[line[0]].selected && this.state.puzzle.dot[line[1]].selected)) {
+                line[2]='legal'
+            } else {
+                line[2]='unselected'
+            }
+        })
+
+        let newDot = [...this.state.puzzle.dot]
+        newDot.forEach((d) => {
+            d.valid=false
+            // console.log('logging', d.valid)})
+        })
+        // console.log('new dot', newDot,)
+        newLine.forEach(function (line, index){
+            if (line.includes('legal')) {
+                newDot[line[0]].valid=true
+                newDot[line[1]].valid=true
+            }
+        newDot.forEach((d) => {
+                if (d.selected === true) {
+                    d.valid=false
+                }
+            })
+        })
+
+        this.setState({puzzle: {...this.state.puzzle, line: [...newLine], dot: [...newDot]}}, () => this.blockPath())
         
         // this.blockPath()
     }
