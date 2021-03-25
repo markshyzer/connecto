@@ -79,8 +79,6 @@ galaxy.dot.forEach(function (d){
 yLargest = yLargest - ySmallest
 xLargest = xLargest - xSmallest
 
-
-console.log('smallests', xSmallest, ySmallest, 'largests', xLargest, yLargest)
 galaxy.dot.forEach(function (d){
     d.x = d.x-xSmallest
     d.y = d.y-ySmallest
