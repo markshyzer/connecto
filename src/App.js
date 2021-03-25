@@ -111,7 +111,7 @@ class App extends React.Component{
               {this.displayMenuPage()}
               {this.showWinPage()}
               <Puzzle puzzle={this.state.puzzle} restart={this.restart} clear={this.state.clear} checkWin={this.checkWin}></Puzzle>
-              <Footer puzzleName={this.state.puzzle.name}></Footer>
+              <Footer puzzleName={this.state.puzzleName}></Footer>
             </div>
   
           )
