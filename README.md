@@ -1,5 +1,7 @@
 # Connecto
 
+![](https://github.com/markshyzer/connecto/blob/main/connecto-screenshots.png)
+
 Connecto is a puzzle game based on Hamiltonian graphs. Solve each puzzle by finding a path that connects every dot on the graph without visiting a dot twice.
 
 ## How to Play
