@@ -11,7 +11,7 @@ class Footer extends React.Component{
             <footer>
                 <img className='icon' src={redo} />
                 <img className='icon' src={hint} />
-                {/* <h1>{this.props.puzzleName.toUpperCase()} PUZZLE</h1> */}
+                <h1>{this.props.puzzleName.toUpperCase()} PUZZLE</h1>
             </footer>
 
         )
