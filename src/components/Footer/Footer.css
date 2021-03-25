@@ -1,0 +1,38 @@
+footer {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 10vh;
+    background-color: rgb(50, 28, 39);
+    color: rgb(226, 196, 165);
+    text-align: center;
+}
+
+footer h1 {
+    font-size: larger ;
+    margin-left: 10%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+footer .icon {
+    width: 6vh;
+    height: 6vh;
+    position: relative;
+    top: 20%;
+    left: 10%;
+    display: inline;
+    margin-right: 10%;
+    /* flex-direction: column; */
+    /* width: 8vmin;
+    height: 8vmin; */
+    /* border: thin solid white; */
+    /* position: absolute; */
+    /* top: 0;
+    right: 0; */
+    /* margin: 5%; */
+
+}

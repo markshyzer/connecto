@@ -1,0 +1,21 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 10vh;
+    background-color: rgb(50, 28, 39);
+    color: rgb(226, 196, 165);
+    text-align: center;
+}
+
+header .icon {
+    width: 8vmin;
+    height: 8vmin;
+    /* border: thin solid white; */
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5%;
+
+}

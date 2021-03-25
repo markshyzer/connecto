@@ -2,10 +2,10 @@ import React from 'react';
 import Dot from '../Dot/Dot'
 import Line from '../Line/Line'
 import './Puzzle.css';
-import galaxy from '../../PuzzleFiles/galaxy';
-import garden from '../../PuzzleFiles/garden';
+// import galaxy from '../../PuzzleFiles/galaxy';
+// import garden from '../../PuzzleFiles/garden';
 import beach from '../../PuzzleFiles/beach';
-
+const cloneDeep = require('clone-deep');
 
 
 class Puzzle extends React.Component{
@@ -14,58 +14,56 @@ class Puzzle extends React.Component{
         this.state = { 
             move: [],
             score: 0,
-            puzzle : galaxy,
-            
-            puzzle2: {
-                dot: [
-                    { x: 382, y: 328.6, selected: false, valid: true },
-                    { x: 673.4, y: 503.6, selected: false, valid: true },
-                    { x: 378.4, y: 500, selected: false, valid: true },
-                    { x: 82.5, y: 495.5, selected: false, valid: true },
-                    { x: 521.9, y: 587.3, selected: false, valid: true },
-                    { x: 229.6, y: 582.9, selected: false, valid: true },
-                    { x: 524.6, y: 758.5, selected: false, valid: true },
-                    { x: 226, y: 754, selected: false, valid: true },
-                    { x: 668.1, y: 844.9, selected: false, valid: true },
-                    { x: 374, y: 840.5, selected: false, valid: true },
-                    { x: 78, y: 836.9, selected: false, valid: true },
-                    { x: 369.5, y: 1011.6, selected: false, valid: true },
-                ],
-                line: [
-                    [0,1,'unselected'],
-                    [0,3,'unselected'],
-                    [0,2,'unselected'],
-                    [0,4,'unselected'],
-                    [0,5,'unselected'],
-                    [1,2,'unselected'],
-                    [1,4,'unselected'],
-                    [1,6,'unselected'],
-                    [1,8,'unselected'],
-                    [2,3,'unselected'],
-                    [2,6,'unselected'],
-                    [2,7,'unselected'],
-                    [3,5,'unselected'],
-                    [3,7,'unselected'],
-                    [3,10,'unselected'],
-                    [4,5,'unselected'],
-                    [4,8,'unselected'],
-                    [4,9,'unselected'],
-                    [5,9,'unselected'],
-                    [5,10,'unselected'],
-                    [6,7,'unselected'],
-                    [6,8,'unselected'],
-                    [6,11,'unselected'],
-                    [7,10,'unselected'],
-                    [7,11,'unselected'],
-                    [8,9,'unselected'],
-                    [8,11,'unselected'],
-                    [9,10,'unselected'],
-                    [9,11,'unselected'],
-                    [10,11,'unselected']
-                    ]
-            }
+            puzzle : beach,
         };
     }
+
+    componentDidMount() {
+        this.init()
+        document.documentElement.style.setProperty('--usedDot', this.state.puzzle.dotColour)
+        document.documentElement.style.setProperty('--usedLine', this.state.puzzle.lineColour)
+        document.documentElement.style.setProperty('--background', this.state.puzzle.bgColour)
+        document.documentElement.style.setProperty('--line', 'rgb(50, 28, 39)')
+        document.documentElement.style.setProperty('--dot', 'rgb(50, 28, 39)')
+        // this.changePuzzle()
+        // document.body.style.backgroundColor = this.state.puzzle.bgColour
+    }
+
+    init = () => {
+        // this.setState({puzzle: {...this.props.puzzle}, score: 0, move: []})
+        let newDot = [...this.props.puzzle.dot]
+        let newLine = [...this.props.puzzle.line]
+        newLine.forEach(function (l){
+            l[2]='unslected'
+        })
+        newDot.forEach(function (d){
+            console.log('init', d)
+            d.valid=true
+            d.selected=false
+        });
+        this.setState({puzzle: {...this.props.puzzle, dot: newDot, line: newLine}, score: 0, move: []})
+    }
+
+    componentDidUpdate() {
+        // console.log(this.state.puzzle.name, this.props.puzzle.name)
+        if (this.props.puzzle.name !== this.state.puzzle.name){
+            this.init()
+            // this.init()
+        }
+        if (this.props.clear === true){
+            this.init()
+            this.props.restart()
+
+        }
+    }
+
+    changePuzzle = () => {
+        console.log('Puzzle update triggered in Puzzle')
+        this.setState({puzzle: this.props.puzzle}, this.init())
+        console.log('move', this.state.move)
+
+    }
+
 
     clickDot = (dotIndex) => {
         // console.log(this.state.puzzle.dot[dotIndex])
@@ -159,10 +157,10 @@ class Puzzle extends React.Component{
 
         let adjacent = Math.abs(this.state.puzzle.dot[pointOne].y - this.state.puzzle.dot[pointTwo].y)
         let hypotenuse = this.lineLength(pointOne, pointTwo)
-        if(this.state.puzzle.dot[pointOne].x > this.state.puzzle.dot[pointTwo].x) {
-            return Math.acos(adjacent/hypotenuse)*-180/Math.PI
-        } else {
+        if(this.state.puzzle.dot[pointOne].x < this.state.puzzle.dot[pointTwo].x) {
             return Math.acos(adjacent/hypotenuse)*180/Math.PI
+        } else {
+            return Math.acos(adjacent/hypotenuse)*-180/Math.PI
         }
 
     }
@@ -170,9 +168,10 @@ class Puzzle extends React.Component{
     render(){
         return(
             <div>
-                <div>Move history: {this.state.move.map((m) => m+',')}</div>
+                {/* <div>Move history: {this.state.move.map((m) => m+',')}</div> */}
+                <body style={{body: this.state.puzzle.bgColour}}></body>
                 {this.state.puzzle.dot.map((d, i) => 
-                <div className={'dot'+String(i)}>
+                // <div className={'dot'+String(i)}>
                 <Dot
                     x={d.x}
                     y={d.y}
@@ -180,10 +179,11 @@ class Puzzle extends React.Component{
                     dotIndex={i}
                     key={i}
                     clickDot={this.clickDot}
-                    valid={d.valid ? 'valid' : 'invalid'}>
+                    valid={d.valid ? 'valid' : 'invalid'}
+                    dotColour={this.state.puzzle.dotColour}>
                     
                 </Dot>
-                </div>
+                // </div>
                 )}
 
                 {/* <div key="line1" className="line" style={{top: 382, left: 328, width: this.lineLength(0,1), transform: "rotate("+this.degrees(0,1)+"deg)" }}></div> */}
@@ -201,6 +201,7 @@ class Puzzle extends React.Component{
                 degrees={this.degrees}
                 status={l[2]}
                 key={'line'+i+l[2]}
+                lineColour ={this.state.puzzle.lineColour}
                 ></Line>
                 )}
 

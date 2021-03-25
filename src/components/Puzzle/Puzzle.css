@@ -1,10 +1,40 @@
-body {
-    background-color: lightblue;
 
+
+* {
+    box-sizing: border-box;
+    /* font-family: open-sans; */
 }
 
+body {
+    background-color: var(--background);
+}
 
+/* 
+Puzzle {
+    background-color: pink;
+} */
 
+.puzzleBox {
+    position: relative;
+    width: 80vmin;
+    height: 80vmin;
+    margin-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    transform: rotate(90deg)
+    }
+
+@media only screen and (max-width: 768px) {
+    /* for mobile  */
+    .puzzleBox {
+        width: 80vmin;
+        height: 80vmin;
+        margin-top: 20vh;
+        margin-left: 10vw;
+        margin-right: 10vw;
+    }
+
+}
 
 /* .line {
     position: absolute;

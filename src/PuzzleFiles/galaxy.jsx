@@ -1,4 +1,5 @@
 let galaxy = {
+    name: 'galaxy',
     dot: [
         { x: 382, y: 328.6, selected: false, valid: true },
         { x: 673.4, y: 503.6, selected: false, valid: true },
@@ -44,26 +45,50 @@ let galaxy = {
         [9,10,'unselected'],
         [9,11,'unselected'],
         [10,11,'unselected']
-        ]
+        ],
+    lineColour: 'rgb(255, 255, 46)',
+    dotColour: 'rgb(203, 226, 247)',
+    bgColour: 'rgb(186, 36, 138)'
+  
+
 }
 
 let xSmallest = 1000
 let ySmallest = 1000
+let xLargest = 0
+let yLargest = 0
 
 galaxy.dot.forEach(function (d){
     if (d.x < xSmallest){
         xSmallest=d.x
     }
 
+    if(d.x > xLargest){
+        xLargest = d.x
+    }
+
+    if(d.y > yLargest){
+        yLargest = d.y
+    }
+
     if (d.y < ySmallest){
         ySmallest=d.y
     }
 })
-console.log('smallests', xSmallest, ySmallest)
+
+yLargest = yLargest - ySmallest
+xLargest = xLargest - xSmallest
+
+
+console.log('smallests', xSmallest, ySmallest, 'largests', xLargest, yLargest)
 galaxy.dot.forEach(function (d){
     d.x = d.x-xSmallest
     d.y = d.y-ySmallest
+    d.x = (d.x/xLargest)*80
+    d.y = (d.y/yLargest)*80
 })
+
+
 
 console.log(galaxy)
 

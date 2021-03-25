@@ -8,20 +8,15 @@ constructor(){
 
 }
 
-// dotstyle = () =>{
-//     let valid = (this.props.valid ? 'valid ' : '')
-//     let selected = (this.props.selected ? 'selected ' : 'unselected ')
-//     return 'dot ' + selected + selected + valid
-// }
-
-
 
     render(){
         return(
-            <div className={'dot '+this.props.selected+ ' ' +this.props.valid} 
+            <div className={'dot '+this.props.selected+ ' ' + this.props.valid} 
             onClick={() => this.props.clickDot(this.props.dotIndex)}
-            style = {{left: this.props.x+"px", top: this.props.y+'px'}}
-            >{this.props.dotIndex} x, {this.props.x} y, {this.props.y}, {this.props.selected},</div>
+            style = {{top: this.props.x+"vmin", left: this.props.y+'vmin'}}
+            >
+                {/* {this.props.dotIndex} x, {Math.round(this.props.x)} y, {Math.round(this.props.y)}, {this.props.selected} */}
+            </div>
 
         )
     }

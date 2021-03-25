@@ -1,18 +1,23 @@
 .dot {
-    background-color: red;
-    width: 3vw;
-    height: 3vw;
+    background-color: var(--dot);
+    width: 5vmin;
+    height: 5vmin;
     border-radius: 50px;
     font-size: x-small;
     position: absolute;
-    transform: translate(-50%, -50%) /* adjusts div by 50% of its height and width so that its center is at x, y */
+    transform: translate(-50%, -50%); /* adjusts div by 50% of its height and width so that its center is at x, y */
+    color: white;
 }
 
 .selected {
-    background-color: green;
+    background-color: var(--usedDot);
+}
+
+.valid {
+    /* box-shadow: 0px 0px 10px 5px  rgb(193, 68, 50); */
 }
 
 .valid:hover {
-    width: 4vw;
-    height: 4vw;
+    width: 6vmin;
+    height: 6vmin;
 }

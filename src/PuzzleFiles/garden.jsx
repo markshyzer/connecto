@@ -1,4 +1,5 @@
 let garden = {
+    name: 'garden',
     dot: [
         {x: 70.3, y: 667.6, selected: false, valid: true},
         {x: 225.9, y: 668.7, selected: false, valid: true},
@@ -32,7 +33,45 @@ let garden = {
         [10, 6, 'unselected'],
         [8, 6, 'unselected'],
         [3, 6, 'unselected'],
-    ]
+        [9, 10, 'unselected'],
+    ],
+    lineColour: 'rgb(251, 233, 120)',
+    dotColour: 'rgb(244, 61, 33)',
+    bgColour: 'rgb(163, 191, 73)'
 }
+
+let xSmallest = 1000
+let ySmallest = 1000
+let xLargest = 0
+let yLargest = 0
+
+garden.dot.forEach(function (d){
+    if (d.x < xSmallest){
+        xSmallest=d.x
+    }
+
+    if(d.x > xLargest){
+        xLargest = d.x
+    }
+
+    if(d.y > yLargest){
+        yLargest = d.y
+    }
+
+    if (d.y < ySmallest){
+        ySmallest=d.y
+    }
+})
+
+yLargest = yLargest - ySmallest
+xLargest = xLargest - xSmallest
+
+
+garden.dot.forEach(function (d){
+    d.x = d.x-xSmallest
+    d.y = d.y-ySmallest
+    d.x = (d.x/xLargest)*80
+    d.y = (d.y/yLargest)*80
+})
 
 export default garden

@@ -1,4 +1,5 @@
 let beach = {
+    name: 'beach',
     dot: [
         {x: 375.3, y: 336.6, selected: false, valid: true },
         {x: 686.7, y: 565.3, selected: false, valid: true },
@@ -53,8 +54,46 @@ let beach = {
         [1, 6, 'unselected'],
         [9, 2, 'unselected'],
         [8, 3, 'unselected'],
-    ]
+    ],
+    lineColour: 'rgb(253, 201, 121)',
+    dotColour: 'rgb(234, 120, 51)',
+    bgColour: 'rgb(0, 148, 139)'
 
 }
+
+
+let xSmallest = 1000
+let ySmallest = 1000
+let xLargest = 0
+let yLargest = 0
+
+beach.dot.forEach(function (d){
+    if (d.x < xSmallest){
+        xSmallest=d.x
+    }
+
+    if(d.x > xLargest){
+        xLargest = d.x
+    }
+
+    if(d.y > yLargest){
+        yLargest = d.y
+    }
+
+    if (d.y < ySmallest){
+        ySmallest=d.y
+    }
+})
+
+yLargest = yLargest - ySmallest
+xLargest = xLargest - xSmallest
+
+
+beach.dot.forEach(function (d){
+    d.x = d.x-xSmallest
+    d.y = d.y-ySmallest
+    d.x = (d.x/xLargest)*80
+    d.y = (d.y/yLargest)*80
+})
 
 export default beach

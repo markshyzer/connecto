@@ -1,0 +1,85 @@
+.menuPage {
+    position: fixed;
+    top: 10vh;
+    right: 0;
+    width: 100vw;
+    height: 80vh;
+    background-color: rgb(193,68,50);
+    z-index: 1;
+}
+
+.menuPageItem {
+    height: 10vh;
+    border-bottom: 3px solid rgb(226,196,165);
+    /* margin: auto; */
+    text-align: center;
+
+}
+
+.menuPageItem p {
+    line-height: 10vh;
+    /* padding-left: -20px; */
+    margin-left: -40px;
+    font-size: x-large;
+    display: inline;
+    color: var(--dot)
+}
+
+.menuPageIcon {
+    position: relative;
+    padding: 15px;
+    height: 100%;
+    float: left;  
+}
+
+.puzzleMenuItem {
+    height: 10vh;
+    border-bottom: 3px solid rgb(226,196,165);
+    /* margin: auto; */
+    text-align: center;
+    display: flex;
+
+}
+
+.puzzleMenuItem p {
+    /* line-height: 10vh; */
+    /* padding-left: -20px; */
+    /* margin-left: -40px; */
+    margin: auto;
+    margin-right: 40px;
+    font-size: x-large;
+    /* display: inline; */
+    color: var(--dot)
+}
+
+.puzzIcon {
+    /* display: flex; */
+    /* flex-direction: row; */
+    margin: auto;
+    margin-left: 0;
+    height: 7vh;
+
+}
+
+.puzzleMenuIcon {
+    position: relative;
+    padding: 15px;
+    height: 100%;
+    float: left;
+}
+
+.instructions {
+    display: flex;
+    color: rgb(226,196,165);
+    margin: auto;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+    width: 90vw;
+    text-align: center;
+}
+
+.sample {
+    display: flex;
+    width: 90vw;
+    margin: auto;
+}
