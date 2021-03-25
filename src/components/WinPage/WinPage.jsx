@@ -9,9 +9,9 @@ class WinPage extends React.Component{
             <div className='winPage' onClick={this.props.hideWin}>
                 <div className='container'>
                     <img className='close' src={close} />
-                    <h1 style={{color: 'var(--reddish)', textAlign: 'center'}}>Contragulations!</h1>
+                    <h1 style={{color: 'var(--reddish)', textAlign: 'center'}}>Congratulations!</h1>
                     <Trophy trophy={true}></Trophy>
-                    <h1 style={{color: 'var(--reddish)'}}>You have successfully completed the puzzle</h1>
+                    <h1 style={{color: 'var(--reddish)'}}>You've successfully completed the puzzle!</h1>
                 </div>
             </div>
 
