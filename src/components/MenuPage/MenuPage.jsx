@@ -15,9 +15,9 @@ content = () => {
             <div className='puzzleMenu'>
                 <div className='menuPageItem' id='0' onClick={this.props.selectMenu}><img className='menuPageIcon' src={leftArrow} /><p id='0'>CHOOSE PUZZLE</p></div>
 
-                <div className='puzzleMenuItem' id='0' onClick={this.props.setPuzzle}><p>BEACH</p><img className='puzzIcon' src={beachIcon} /></div>
-                <div className='puzzleMenuItem' id='1' onClick={this.props.setPuzzle}><p>GARDEN</p><img className='puzzIcon' src={gardenIcon} /></div>
-                <div className='puzzleMenuItem' id='2' onClick={this.props.setPuzzle}><p>GALAXY</p><img className='puzzIcon' src={galaxyIcon} /></div>
+                <div className='puzzleMenuItem' id='0' onClick={this.props.setPuzzle}><p id='0'>BEACH</p><img id='0' className='puzzIcon' src={beachIcon} /></div>
+                <div className='puzzleMenuItem' id='1' onClick={this.props.setPuzzle}><p id='1'>GARDEN</p><img id='1' className='puzzIcon' src={gardenIcon} /></div>
+                <div className='puzzleMenuItem' id='2' onClick={this.props.setPuzzle}><p id='2'>GALAXY</p><img id='2' className='puzzIcon' src={galaxyIcon} /></div>
             </div>
         )
     } else if (this.props.content == 2){

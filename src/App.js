@@ -61,7 +61,7 @@ class App extends React.Component{
     e.stopPropagation()       
     let puzzles = [beach, garden, galaxy]
     // let puzzleNames = ['beach', 'garden', 'galaxy']
-    this.setState({puzzle: puzzles[e.target.id]}, this.showMenu())  
+    this.setState({puzzle: puzzles[e.target.id]}, () => this.showMenu())  
     // this.showMenu()
     // this.setState({menuPage : 0})
   }
@@ -111,7 +111,7 @@ class App extends React.Component{
               {this.displayMenuPage()}
               {this.showWinPage()}
               <Puzzle puzzle={this.state.puzzle} restart={this.restart} clear={this.state.clear} checkWin={this.checkWin}></Puzzle>
-              <Footer></Footer>
+              <Footer puzzleName={this.state.puzzle.name}></Footer>
             </div>
   
           )
