@@ -6,7 +6,8 @@ Connecto is a puzzle game based on Hamiltonian graphs. Solve each puzzle by find
 
 ## How to Play
 
-Start at any point. Connecto will highlight available paths for your next move. Click the hamburger menu in the top right corner to start again, choose a different puzzle, or see your trophy collection.
+Start at any point. Connecto will highlight available paths for your next move. Click the hamburger menu in the top right corner to start again, choose a different puzzle, or see your trophy collection. 
+### [Play it here!](https://hey-its-connecto.herokuapp.com/)
 
 ## Features
 - Responsive design looks great on mobile or desktop
