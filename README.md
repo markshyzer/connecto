@@ -18,4 +18,4 @@ code by Mark Shyzer
 ## Technical
 Built as a single-page app using React
 
-
+![](https://github.com/markshyzer/connecto/blob/main/connecto-wireframes.png)
