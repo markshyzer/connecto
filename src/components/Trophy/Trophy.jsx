@@ -5,10 +5,7 @@ import outline from '../../Icons_Trophy_outline.png';
 
 
 class Trophy extends React.Component{
-constructor(){
-    super();
 
-}
 
 
     render(){

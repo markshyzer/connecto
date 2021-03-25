@@ -1,0 +1,43 @@
+.winPage {
+    position: fixed;
+    top: 10vh;
+    right: 0;
+    width: 100vw;
+    height: 80vh;
+    background-color: var(--text);
+    z-index: 1;
+    margin: auto;
+}
+
+.close {
+    position: fixed;
+    top: 12vh;
+    right: 4vw;
+    width: 10vmin;
+}
+
+.container {
+    margin-top: 20vh;
+    flex-direction: column;
+}
+
+.winPage h1 {
+    font-size: x-large;
+    color: var(--reddish);
+    text-align: center;
+    margin: auto;
+}
+
+@media only screen and (min-width: 768px) {
+    .winPage {
+        top: 7vh;
+        right: 29vw;
+        width: 50vw;
+        height: 86vh;
+    }
+
+    .close {
+        width: 5vmin;
+        right: 33vw;
+    }
+}

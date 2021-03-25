@@ -3,10 +3,7 @@ import './Dot.css';
 
 
 class Dot extends React.Component{
-constructor(){
-    super();
 
-}
 
 
     render(){

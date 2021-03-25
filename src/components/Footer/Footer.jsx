@@ -5,17 +5,16 @@ import redo from '../../Icons_Redo.png'
 
 
 class Footer extends React.Component{
-constructor(){
-    super();
 
-}
+
+
 
     render(){
         return(
             <footer>
                 <img className='icon' src={redo} />
                 <img className='icon' src={hint} />
-                <h1>GARDEN PUZZLE</h1>
+                <h1>{this.props.puzzleName.toUpperCase()} PUZZLE</h1>
             </footer>
 
         )

@@ -1,14 +1,10 @@
 import React from 'react';
 import './Menu.css';
 import rightArrow from '../../Arrow_Right.png';
-import leftArrow from '../../Arrow_Left.png';
 
 
 class Menu extends React.Component{
-constructor(){
-    super();
 
-}
 
 
     render(){

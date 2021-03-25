@@ -14,34 +14,34 @@ Puzzle {
     background-color: pink;
 } */
 
-.puzzleBox {
-    position: relative;
-    width: 80vmin;
-    height: 80vmin;
-    margin-top: 10vh;
-    margin-left: auto;
-    margin-right: auto;
-    transform: rotate(90deg)
-    }
-
-@media only screen and (max-width: 768px) {
-    /* for mobile  */
-    .puzzleBox {
-        width: 80vmin;
-        height: 80vmin;
-        margin-top: 20vh;
-        margin-left: 10vw;
-        margin-right: 10vw;
-    }
-
+.puzzleBoxContainer {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    /* border: thick solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
 }
 
-/* .line {
-    position: absolute;
-    height: 0px;
-    border-top: thin solid blue;
-    /* width: 100vw; */
-    /* transform-origin: bottom left;
-     
+.puzzleBox {
+    /* display: flex; */
+    /* position: relative; */
+    width: 80vmin;
+    height: 80vmin;
+    /* margin-top: 10vh; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    transform: rotate(90deg);
+    /* border: thin solid blue; */
+    }
 
-} */ 
+/* @media only screen and (max-width: 768px) {
+
+
+
+
+} */

@@ -83,3 +83,25 @@
     width: 90vw;
     margin: auto;
 }
+
+@media only screen and (min-width: 768px) {
+    .menuPage {
+        position: fixed;
+        top: 7vh;
+        right: 29vw;
+        width: 50vw;
+        height: 86vh;
+        background-color: rgb(193,68,50);
+        z-index: 1;
+    }
+
+    .sample {
+        width: 35vw;
+    }
+
+    .instructions {
+        max-width: 45vw;
+        font-size: large;
+    }
+
+}

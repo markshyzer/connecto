@@ -10,12 +10,37 @@ header {
 }
 
 header .icon {
-    width: 8vmin;
-    height: 8vmin;
+    width: 10vmin;
+    height: 10vmin;
     /* border: thin solid white; */
     position: absolute;
     top: 0;
     right: 0;
     margin: 5%;
+
+}
+
+@media only screen and (min-width: 768px) {
+    header {
+        height: 7vh;
+    }
+
+    header h1 {
+        margin: auto;
+    }
+
+    header .icon {
+        display: inline;
+        flex-direction: row;
+        width: 5vmin;
+        height: 5vmin;
+        top: -9vh;
+        right: 25vw;
+        /* position: absolute;
+        width: 7vmin;
+        height: 7vmin;
+        top: -8vmin; */
+    }
+
 
 }

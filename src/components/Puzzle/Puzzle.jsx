@@ -5,7 +5,7 @@ import './Puzzle.css';
 // import galaxy from '../../PuzzleFiles/galaxy';
 // import garden from '../../PuzzleFiles/garden';
 import beach from '../../PuzzleFiles/beach';
-const cloneDeep = require('clone-deep');
+
 
 
 class Puzzle extends React.Component{
@@ -20,13 +20,6 @@ class Puzzle extends React.Component{
 
     componentDidMount() {
         this.init()
-        document.documentElement.style.setProperty('--usedDot', this.state.puzzle.dotColour)
-        document.documentElement.style.setProperty('--usedLine', this.state.puzzle.lineColour)
-        document.documentElement.style.setProperty('--background', this.state.puzzle.bgColour)
-        document.documentElement.style.setProperty('--line', 'rgb(50, 28, 39)')
-        document.documentElement.style.setProperty('--dot', 'rgb(50, 28, 39)')
-        // this.changePuzzle()
-        // document.body.style.backgroundColor = this.state.puzzle.bgColour
     }
 
     init = () => {
@@ -37,11 +30,16 @@ class Puzzle extends React.Component{
             l[2]='unslected'
         })
         newDot.forEach(function (d){
-            console.log('init', d)
             d.valid=true
             d.selected=false
         });
-        this.setState({puzzle: {...this.props.puzzle, dot: newDot, line: newLine}, score: 0, move: []})
+        this.setState({puzzle: {...this.props.puzzle, dot: newDot, line: newLine}, score: 0, move: []}, ()=>{})
+        document.documentElement.style.setProperty('--line', 'rgb(50, 28, 39)')
+        document.documentElement.style.setProperty('--dot', 'rgb(50, 28, 39)')
+        document.documentElement.style.setProperty('--usedDot', this.props.puzzle.dotColour)
+        document.documentElement.style.setProperty('--usedLine', this.props.puzzle.lineColour)
+        document.documentElement.style.setProperty('--background', this.props.puzzle.bgColour)
+
     }
 
     componentDidUpdate() {
@@ -77,17 +75,10 @@ class Puzzle extends React.Component{
             this.setState({move: [...newMove]}, () => this.checkLegal())
             // console.log(this.state.puzzle.dot[dotIndex])
             // console.log('this.state.move', this.state.move[0])
-            this.setState({score: this.state.score+1}, this.checkWin())
+            this.setState({score: this.state.score+1}, this.props.checkWin(this.state.score, this.props.puzzle.dot.length-1))
 
         }
 
-    }
-
-    checkWin = () => {
-        if (this.state.score === this.state.puzzle.dot.length-1) {
-            alert("You win!")
-        }
-        console.log('score', this.state.score)
     }
 
     blockPath = () => {
@@ -168,10 +159,11 @@ class Puzzle extends React.Component{
     render(){
         return(
             <div>
-                {/* <div>Move history: {this.state.move.map((m) => m+',')}</div> */}
-                <body style={{body: this.state.puzzle.bgColour}}></body>
+                {/* <body style={{body: this.state.puzzle.bgColour}}></body> */}
+                <div className='puzzleBoxContainer'>
+                <div className='puzzleBox'>
                 {this.state.puzzle.dot.map((d, i) => 
-                // <div className={'dot'+String(i)}>
+
                 <Dot
                     x={d.x}
                     y={d.y}
@@ -183,14 +175,7 @@ class Puzzle extends React.Component{
                     dotColour={this.state.puzzle.dotColour}>
                     
                 </Dot>
-                // </div>
                 )}
-
-                {/* <div key="line1" className="line" style={{top: 382, left: 328, width: this.lineLength(0,1), transform: "rotate("+this.degrees(0,1)+"deg)" }}></div> */}
-                {/* <div key="line2" className="line" style={{top: 382, left: 328, width: this.lineLength(0,11), transform: "rotate("+this.degrees(0,11)+"deg)" }}></div>
-                <div key="line3" className="line" style={{top: 382, left: 328, width: this.lineLength(0,5), transform: "rotate("+this.degrees(0,5)+"deg)" }}>{this.degrees(0,3)}</div>
-                <div key="line4" className="line" style={{top: 382, left: 328, width: this.lineLength(0,10), transform: "rotate("+this.degrees(0,10)+"deg)" }}></div>
-                <div key="line5" className="line" style={{top: 382, left: 328, width: this.lineLength(0,7), transform: "rotate("+this.degrees(0,7)+"deg)" }}></div> */}
                 {this.state.puzzle.line.map((l,i) =>
                 <Line 
                 x={this.state.puzzle.dot[l[0]].x}
@@ -205,8 +190,8 @@ class Puzzle extends React.Component{
                 ></Line>
                 )}
 
-                {/* <div key="line4" className="line" style={{top: 382, left: 328, width: this.lineLength(0,5), transform: "rotate(-60.8deg)" }}></div> */}
-
+                </div>
+                </div>
             </div>
             
 

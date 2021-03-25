@@ -3,7 +3,7 @@
 .line {
     position: absolute;
     height: 0px;
-    border-top: thick solid var(--line);
+    border-top: 4px solid var(--line);
     /* width: 100vw; */
     transform-origin: bottom left;
     z-index: -1;
@@ -17,5 +17,5 @@
 }
 
 .used {
-    border-top: 10px solid  var(--usedLine);
+    border-top: 4px solid  var(--usedLine);
 }

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Puzzle from './components/Puzzle/Puzzle';
 import Header from './components/Header/Header';
@@ -9,7 +8,7 @@ import React from 'react';
 import galaxy from './PuzzleFiles/galaxy';
 import garden from './PuzzleFiles/garden';
 import beach from './PuzzleFiles/beach';
-const cloneDeep = require('clone-deep');
+import WinPage from './components/WinPage/WinPage';
 
 
 class App extends React.Component{
@@ -17,7 +16,7 @@ class App extends React.Component{
       super();
       this.state = {
         beachTrophy: false,
-        gardenTrophy: true,
+        gardenTrophy: false,
         galaxyTrophy: false,
         menu: false,
         menuPage: 0,
@@ -25,8 +24,42 @@ class App extends React.Component{
         puzzle: beach,
         puzzleName: 'beach',
         clear: false,
+        showWin: false,
       };
   
+  }
+
+  checkWin = (score, length) => {
+    console.log(score, length)
+    if (score === length) {
+        // alert("You win!")
+      this.setState({showWin: true})
+      this.awardTrophy()
+    }
+  }
+
+  hideWin = () => {
+    console.log('hideWin clickety')
+    this.setState({showWin: false})
+
+  }
+
+  awardTrophy = () => {
+    if (this.state.puzzle.name === 'beach'){
+      this.setState({beachTrophy : true})
+    } else if (this.state.puzzle.name === 'garden'){
+      this.setState({gardenTrophy : true})
+      } else if (this.state.puzzle.name === 'galaxy'){
+        this.setState({galaxyTrophy : true})
+    }
+  }
+
+  showWinPage = () => {
+    if (this.state.showWin === true){
+      return <WinPage hideWin={this.hideWin}></WinPage>
+    } else {
+      return
+    }
   }
 
   setPuzzle = (e) => {
@@ -60,11 +93,12 @@ class App extends React.Component{
       return
     } else {
       return (<MenuPage content={this.state.menuPage} selectMenu={this.selectMenu} setPuzzle={this.setPuzzle}
-        beachTrophy={this.state.beachtrophy}
+        beachTrophy={this.state.beachTrophy}
         gardenTrophy={this.state.gardenTrophy}
         galaxyTrophy={this.state.galaxyTrophy}
         ></MenuPage>)
-    }
+    } 
+  
   }
 
   selectMenu = (e) => {
@@ -76,6 +110,7 @@ class App extends React.Component{
 
   showMenu = () => {
     // let newMenu = !this.stat
+    console.log('showMenu')
     this.setState({menu: !this.state.menu, menuPage: 0 }, console.log(this.state.menu))
   }
   
@@ -89,13 +124,13 @@ class App extends React.Component{
               {/* <Menu></Menu> */}
               {this.displayMenu()}
               {this.displayMenuPage()}
-
-
+              {this.showWinPage()}
+              {/* <WinPage></WinPage> */}
               {/* <MenuPage></MenuPage> */}
-              <div className="puzzleBox">
-                <Puzzle puzzle={this.state.puzzle} restart={this.restart} clear={this.state.clear}></Puzzle>
-              </div>
-              <Footer></Footer>
+              {/* <div className="puzzleBox"> */}
+                <Puzzle puzzle={this.state.puzzle} restart={this.restart} clear={this.state.clear} checkWin={this.checkWin}></Puzzle>
+              {/* </div> */}
+              <Footer puzzleName={this.state.puzzle.name}></Footer>
             </div>
   
           )

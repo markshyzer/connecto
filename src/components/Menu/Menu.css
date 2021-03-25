@@ -43,3 +43,15 @@
 
        
 }
+
+@media only screen and (min-width: 768px) {
+    .menu {
+        position: fixed;
+        top: 7vh;
+        right: 29vw;
+        width: 25vw;
+        height: 86vh;
+        background-color: rgb(193,68,50);
+        z-index: 1;
+    }
+}
