@@ -61,14 +61,14 @@ class App extends React.Component{
     e.stopPropagation()       
     let puzzles = [beach, garden, galaxy]
     let puzzleNames = ['beach', 'garden', 'galaxy']
-    this.setState({puzzle: {...puzzles[e.target.id]}, puzzleName: puzzleNames[e.target.id]}, () => {})  
-    this.showMenu()
-    this.setState({menuPage : 0})
+    this.setState({puzzle: {...puzzles[e.target.id]}, puzzleName: puzzleNames[e.target.id]}, this.showMenu())  
+    // this.showMenu()
+    // this.setState({menuPage : 0})
   }
 
   restart = () => {
-    this.setState({clear: !this.state.clear}, () => {})
-    this.showMenu()
+    this.setState({clear: !this.state.clear}, this.showMenu())
+    // this.showMenu()
   }
 
   displayMenu = () => {
