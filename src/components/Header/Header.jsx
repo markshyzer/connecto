@@ -5,7 +5,6 @@ import menuIcon from '../../Icons_Menu.png'
 
 class Header extends React.Component{
 
-
     render(){
         return(
             <header>

@@ -2,15 +2,8 @@ import React from 'react';
 import './WinPage.css';
 import Trophy from '../Trophy/Trophy'
 import close from '../../Icons_Close.png'
-// import rightArrow from '../../Arrow_Right.png';
-
-
 
 class WinPage extends React.Component{
-constructor(){
-    super();
-}
-
     render(){
         return(
             <div className='winPage' onClick={this.props.hideWin}>

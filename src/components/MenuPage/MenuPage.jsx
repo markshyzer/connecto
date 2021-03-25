@@ -1,8 +1,6 @@
 import React from 'react';
 import './MenuPage.css';
-// import rightArrow from '../../Arrow_Right.png';
 import leftArrow from '../../Arrow_Left.png';
-// import MenuContent from '../../MenuContent/MenuContent';
 import Trophy from '../Trophy/Trophy';
 import example from '../../Icons_Examples.png';
 import beachIcon from '../../Icons_Beach_Puzzle_small.png';
@@ -48,14 +46,7 @@ content = () => {
     render(){
         return(
             <div className='menuPage'>
-                
                 {this.content()}
-                {/* <MenuContent setPuzzle={this.props.setPuzzle} 
-                        content={this.props.content}
-                        beachTrophy={this.props.beachtrophy}
-                        gardenTrophy={this.props.gardenTrophy}
-                        galaxyTrophy={this.props.galaxyTrophy}
-                ></MenuContent> */}
             </div>
 
         )

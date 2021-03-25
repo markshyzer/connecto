@@ -6,9 +6,6 @@ import redo from '../../Icons_Redo.png'
 
 class Footer extends React.Component{
 
-
-
-
     render(){
         return(
             <footer>

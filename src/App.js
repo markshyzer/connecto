@@ -26,22 +26,17 @@ class App extends React.Component{
         clear: false,
         showWin: false,
       };
-  
   }
 
   checkWin = (score, length) => {
-    console.log(score, length)
     if (score === length) {
-        // alert("You win!")
       this.setState({showWin: true})
       this.awardTrophy()
     }
   }
 
   hideWin = () => {
-    console.log('hideWin clickety')
     this.setState({showWin: false})
-
   }
 
   awardTrophy = () => {
@@ -64,19 +59,15 @@ class App extends React.Component{
 
   setPuzzle = (e) => {
     e.stopPropagation()       
-    console.log('Puzzle update triggered', e.target.id)
     let puzzles = [beach, garden, galaxy]
     let puzzleNames = ['beach', 'garden', 'galaxy']
-    this.setState({puzzle: {...puzzles[e.target.id]}, puzzleName: puzzleNames[e.target.id]}, () => console.log(this.state.puzzleName))  
-    // {...puzzles[e.target.id]}
+    this.setState({puzzle: {...puzzles[e.target.id]}, puzzleName: puzzleNames[e.target.id]}, () => {})  
     this.showMenu()
     this.setState({menuPage : 0})
   }
 
   restart = () => {
-    console.log('clear clicked')
-    // let c = !this.state.clear
-    this.setState({clear: !this.state.clear}, () => console.log(this.state.clear))
+    this.setState({clear: !this.state.clear}, () => {})
     this.showMenu()
   }
 
@@ -98,20 +89,15 @@ class App extends React.Component{
         galaxyTrophy={this.state.galaxyTrophy}
         ></MenuPage>)
     } 
-  
   }
 
   selectMenu = (e) => {
     e.stopPropagation()
-    console.log('clickety! selectMenu', e.target.id)
     this.setState({menuPage: parseInt(e.target.id)})
-
   }
 
   showMenu = () => {
-    // let newMenu = !this.stat
-    console.log('showMenu')
-    this.setState({menu: !this.state.menu, menuPage: 0 }, console.log(this.state.menu))
+    this.setState({menu: !this.state.menu, menuPage: 0 }, ()=>{})
   }
   
   
@@ -121,15 +107,10 @@ class App extends React.Component{
               <Header
               showMenu={this.showMenu}
               ></Header>
-              {/* <Menu></Menu> */}
               {this.displayMenu()}
               {this.displayMenuPage()}
               {this.showWinPage()}
-              {/* <WinPage></WinPage> */}
-              {/* <MenuPage></MenuPage> */}
-              {/* <div className="puzzleBox"> */}
-                <Puzzle puzzle={this.state.puzzle} restart={this.restart} clear={this.state.clear} checkWin={this.checkWin}></Puzzle>
-              {/* </div> */}
+              <Puzzle puzzle={this.state.puzzle} restart={this.restart} clear={this.state.clear} checkWin={this.checkWin}></Puzzle>
               <Footer puzzleName={this.state.puzzle.name}></Footer>
             </div>
   

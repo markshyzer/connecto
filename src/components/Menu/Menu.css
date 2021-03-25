@@ -11,25 +11,14 @@
 .menuItem {
     height: 10vh;
     border-bottom: 3px solid rgb(226,196,165);
-
-
-
     margin: auto;
-    /* display: flex; */
-    /* width: 90%; */
-    /* border: thin solid red;  */
+
 }
 
 .menuItem p {
     line-height: 10vh;
     padding-left: 10px;
     font-size: x-large;
-    /* display: inline; */
-    /* margin-top: auto; */
-    /* max-width: fit-content;
-    height: fit-content; */
-    /* float: left; */
-    /* border: thin solid pink; */
     display: inline;
     color: var(--plum)
 }
@@ -37,11 +26,7 @@
 .menuIcon {
     padding: 15px;
     height: 100%;
-    float: right;
-    /* border: thin solid blue; */
-    /* border */
-
-       
+    float: right;      
 }
 
 @media only screen and (min-width: 768px) {

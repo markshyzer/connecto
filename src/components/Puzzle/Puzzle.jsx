@@ -2,8 +2,6 @@ import React from 'react';
 import Dot from '../Dot/Dot'
 import Line from '../Line/Line'
 import './Puzzle.css';
-// import galaxy from '../../PuzzleFiles/galaxy';
-// import garden from '../../PuzzleFiles/garden';
 import beach from '../../PuzzleFiles/beach';
 
 
@@ -23,7 +21,6 @@ class Puzzle extends React.Component{
     }
 
     init = () => {
-        // this.setState({puzzle: {...this.props.puzzle}, score: 0, move: []})
         let newDot = [...this.props.puzzle.dot]
         let newLine = [...this.props.puzzle.line]
         newLine.forEach(function (l){
@@ -39,67 +36,49 @@ class Puzzle extends React.Component{
         document.documentElement.style.setProperty('--usedDot', this.props.puzzle.dotColour)
         document.documentElement.style.setProperty('--usedLine', this.props.puzzle.lineColour)
         document.documentElement.style.setProperty('--background', this.props.puzzle.bgColour)
-
     }
 
     componentDidUpdate() {
-        // console.log(this.state.puzzle.name, this.props.puzzle.name)
         if (this.props.puzzle.name !== this.state.puzzle.name){
             this.init()
-            // this.init()
         }
         if (this.props.clear === true){
             this.init()
             this.props.restart()
-
         }
     }
 
     changePuzzle = () => {
-        console.log('Puzzle update triggered in Puzzle')
         this.setState({puzzle: this.props.puzzle}, this.init())
-        console.log('move', this.state.move)
-
     }
 
-
     clickDot = (dotIndex) => {
-        // console.log(this.state.puzzle.dot[dotIndex])
         if (this.state.puzzle.dot[dotIndex].valid){
             let newDot = [...this.state.puzzle.dot]
             newDot[dotIndex].selected = !(newDot[dotIndex].selected)
             let newMove = [...this.state.move]
             newMove.push(dotIndex)
-            // console.log('push move', newMove)
             this.setState({puzzle: {...this.state.puzzle, dot: newDot}})
             this.setState({move: [...newMove]}, () => this.checkLegal())
-            // console.log(this.state.puzzle.dot[dotIndex])
-            // console.log('this.state.move', this.state.move[0])
             this.setState({score: this.state.score+1}, this.props.checkWin(this.state.score, this.props.puzzle.dot.length-1))
-
         }
 
     }
 
     blockPath = () => {
-
-        // console.log("current move:", this.state.move[this.state.move.length-1] )
         let newLine = [...this.state.puzzle.line]
         let prevDot = this.state.move[0]
         this.state.move.forEach(function (m,i){
             if (i > 0){
                 newLine.forEach(function (line, index){
                     if(line.includes(m) && line.includes(prevDot)){
-                        console.log('the line includes ', m, 'and ', prevDot)
                         newLine[index].splice(2, 1, 'used')
                     }
                 })
             }
             prevDot = m
         })
-        // this.setState({line: [...newLine]}, () => console.log('used:', this.state.line))
         this.setState({puzzle: {...this.state.puzzle, line: [...newLine]}})
-
     }
 
     checkLegal = () => {
@@ -118,9 +97,7 @@ class Puzzle extends React.Component{
         let newDot = [...this.state.puzzle.dot]
         newDot.forEach((d) => {
             d.valid=false
-            // console.log('logging', d.valid)})
         })
-        // console.log('new dot', newDot,)
         newLine.forEach(function (line, index){
             if (line.includes('legal')) {
                 newDot[line[0]].valid=true
@@ -132,10 +109,7 @@ class Puzzle extends React.Component{
                 }
             })
         })
-
         this.setState({puzzle: {...this.state.puzzle, line: [...newLine], dot: [...newDot]}}, () => this.blockPath())
-        
-        // this.blockPath()
     }
 
     lineLength = (pointOne, pointTwo) => {
@@ -145,7 +119,6 @@ class Puzzle extends React.Component{
     }
 
     degrees = (pointOne, pointTwo) => {
-
         let adjacent = Math.abs(this.state.puzzle.dot[pointOne].y - this.state.puzzle.dot[pointTwo].y)
         let hypotenuse = this.lineLength(pointOne, pointTwo)
         if(this.state.puzzle.dot[pointOne].x < this.state.puzzle.dot[pointTwo].x) {
@@ -153,13 +126,11 @@ class Puzzle extends React.Component{
         } else {
             return Math.acos(adjacent/hypotenuse)*-180/Math.PI
         }
-
     }
 
     render(){
         return(
             <div>
-                {/* <body style={{body: this.state.puzzle.bgColour}}></body> */}
                 <div className='puzzleBoxContainer'>
                 <div className='puzzleBox'>
                 {this.state.puzzle.dot.map((d, i) => 
@@ -193,9 +164,6 @@ class Puzzle extends React.Component{
                 </div>
                 </div>
             </div>
-            
-
-
         )
     }
 }

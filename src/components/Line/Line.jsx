@@ -12,14 +12,9 @@ class Line extends React.Component{
             style={{top: this.props.x+'vmin', 
             left: this.props.y+'vmin', 
             width: this.props.lineLength(this.props.start, this.props.end)+'vmin', 
-            transform: "rotate("+this.props.degrees(this.props.start,this.props.end)+"deg)",  
-            // border: this.props.selected === 'used' ? 'border-top: 10px solid ' +this.props.lineColour : 'default',
-        }}
+            transform: "rotate("+this.props.degrees(this.props.start,this.props.end)+"deg)",}}
             >
-                {/* {this.props.status} */}
             </div>
-
-
         )
     }
 }

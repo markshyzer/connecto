@@ -1,18 +1,10 @@
-
-
 * {
     box-sizing: border-box;
-    /* font-family: open-sans; */
 }
 
 body {
     background-color: var(--background);
 }
-
-/* 
-Puzzle {
-    background-color: pink;
-} */
 
 .puzzleBoxContainer {
     position: absolute;
@@ -20,7 +12,6 @@ Puzzle {
     height: 100vh;
     top: 0;
     left: 0;
-    /* border: thick solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,20 +19,9 @@ Puzzle {
 }
 
 .puzzleBox {
-    /* display: flex; */
-    /* position: relative; */
     width: 80vmin;
     height: 80vmin;
-    /* margin-top: 10vh; */
-    /* margin-left: auto; */
-    /* margin-right: auto; */
     transform: rotate(90deg);
-    /* border: thin solid blue; */
     }
 
-/* @media only screen and (max-width: 768px) {
 
-
-
-
-} */

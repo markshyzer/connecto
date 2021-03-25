@@ -5,8 +5,6 @@ import rightArrow from '../../Arrow_Right.png';
 
 class Menu extends React.Component{
 
-
-
     render(){
         return(
             <div className='menu'>

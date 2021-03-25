@@ -26,15 +26,6 @@ footer .icon {
     left: 10%;
     display: inline;
     margin-right: 10%;
-    /* flex-direction: column; */
-    /* width: 8vmin;
-    height: 8vmin; */
-    /* border: thin solid white; */
-    /* position: absolute; */
-    /* top: 0;
-    right: 0; */
-    /* margin: 5%; */
-
 }
 
 @media only screen and (min-width: 768px) {
@@ -51,6 +42,5 @@ footer .icon {
     footer h1 {
         position: relative;
         left: 40vw;
-        
     }
 }
