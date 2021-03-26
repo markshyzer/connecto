@@ -6,17 +6,31 @@ header {
     height: 10vh;
     background-color: rgb(50, 28, 39);
     color: rgb(226, 196, 165);
-    text-align: center;
+
+}
+
+.headline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header h1 {
+    width: fit-content;
+    margin: auto;
+
 }
 
 header .icon {
-    width: 10vmin;
-    height: 10vmin;
     position: absolute;
-    top: 0;
-    right: 0;
-    margin: 5%;
+    width: 7vh;
+    height: 7vh;
+    top: 1vh;
+    right: 5vw;
+
 }
+
+
 
 @media only screen and (min-width: 768px) {
     header {
@@ -28,13 +42,12 @@ header .icon {
     }
 
     header .icon {
-        display: inline;
-        flex-direction: row;
+        position: absolute;
         width: 5vmin;
         height: 5vmin;
-        top: -9vh;
-        right: 25vw;
-    }
+        top: .5vh;
+        right: 29vw;
+    } 
 
 
 }

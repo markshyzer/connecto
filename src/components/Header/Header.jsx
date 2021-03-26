@@ -8,7 +8,9 @@ class Header extends React.Component{
     render(){
         return(
             <header>
-                <h1>CONNECTO</h1><img className="icon" onClick={this.props.showMenu} src={menuIcon} />
+                <div className='headline'>
+                    <h1>CONNECTO</h1><img className="icon" onClick={this.props.showMenu} src={menuIcon} />
+                </div>
             </header>
 
         )
